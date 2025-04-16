@@ -1,6 +1,5 @@
 package com.minesweeper.handler;
 
-// Import necessary classes from new locations
 import com.minesweeper.domain.Grid;
 
 /**
@@ -59,13 +58,12 @@ public interface OutputHandler {
     /**
      * Displays a prompt telling user cell is already revealed.
      * (e.g., "(Already revealed)")
-     * Note: The actual reading of the response is handled by InputHandler.
      */
     void displayAlreadyRevealedMessage();
+
     /**
      * Displays a prompt asking the user if they want to play again.
      * (e.g., "Press any key to play again...") 
-     * Note: The actual reading of the response is handled by InputHandler.
      */
     void displayPromptPlayAgain();
 

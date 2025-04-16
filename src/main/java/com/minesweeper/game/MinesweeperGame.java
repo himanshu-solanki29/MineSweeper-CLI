@@ -1,6 +1,6 @@
 package com.minesweeper.game;
 
-// Import necessary classes from new locations
+
 import com.minesweeper.config.GameConfiguration;
 import com.minesweeper.domain.Cell;
 import com.minesweeper.domain.Coordinates;

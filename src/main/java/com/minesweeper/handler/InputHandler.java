@@ -1,6 +1,5 @@
 package com.minesweeper.handler;
 
-// Import necessary classes from new locations
 import com.minesweeper.config.GameConfiguration;
 import com.minesweeper.domain.Coordinates;
 import com.minesweeper.exception.InputCancelledException;
@@ -38,5 +37,4 @@ public interface InputHandler {
      */
     boolean promptPlayAgain();
     
-    // Nested exception was removed and moved to com.minesweeper.exception package
 } 

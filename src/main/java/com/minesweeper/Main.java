@@ -1,6 +1,5 @@
 package com.minesweeper;
 
-// Import necessary classes from their new locations
 import com.minesweeper.game.MinesweeperGame;
 import com.minesweeper.handler.InputHandler;
 import com.minesweeper.handler.MinePlacer;
@@ -8,8 +7,6 @@ import com.minesweeper.handler.OutputHandler;
 import com.minesweeper.io.console.ConsoleInputHandler;
 import com.minesweeper.io.console.ConsoleOutputHandler;
 import com.minesweeper.placement.RandomMinePlacer;
-
-// Removed import java.util.Scanner as it's not directly used here
 
 /**
  * Main application entry point for the Minesweeper game.

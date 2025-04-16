@@ -1,12 +1,11 @@
 package com.minesweeper.handler;
 
-// Import necessary classes from new locations
 import com.minesweeper.domain.Grid;
 
 /**
  * Interface defining the contract for strategies that place mines on a Grid.
  */
-@FunctionalInterface // Good practice if the interface has only one abstract method
+@FunctionalInterface
 public interface MinePlacer {
 
     /**

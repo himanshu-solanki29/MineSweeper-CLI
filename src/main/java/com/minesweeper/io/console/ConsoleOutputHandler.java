@@ -1,6 +1,5 @@
 package com.minesweeper.io.console;
 
-// Import necessary classes from new locations
 import com.minesweeper.domain.Cell;
 import com.minesweeper.domain.Coordinates;
 import com.minesweeper.domain.Grid;
@@ -13,7 +12,7 @@ import com.minesweeper.handler.OutputHandler;
 public class ConsoleOutputHandler implements OutputHandler {
 
     private static final String HIDDEN_CELL = "_";
-    private static final String MINE_CELL = "*"; // Character for a revealed mine (though game usually ends)
+    private static final String MINE_CELL = "*";
 
     @Override
     public void displayWelcomeMessage() {
@@ -51,11 +50,8 @@ public class ConsoleOutputHandler implements OutputHandler {
             return HIDDEN_CELL;
         } else {
             if (cell.isMine()) {
-                // This typically shouldn't be shown during normal play as game ends,
-                // but useful for displaying the final grid on loss.
                 return MINE_CELL;
             } else {
-                // Display adjacent mine count for revealed non-mine cells
                 return String.valueOf(cell.getAdjacentMineCount());
             }
         }

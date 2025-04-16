@@ -1,7 +1,5 @@
 package com.minesweeper.domain;
 
-// Import necessary classes from new locations
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -175,6 +173,11 @@ public class Grid {
 
     }
 
+    /**
+     * Recursively reveals adjacent cells that have no adjacent mines.
+     * 
+     * @param center The coordinates of the cell to start revealing from.
+     */
     private void revealAdjacentCells(Coordinates center) {
         int[] directions = {-1, 0, 1};
         for (int rowOffset : directions) {

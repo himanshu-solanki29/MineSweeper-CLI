@@ -1,15 +1,14 @@
 package com.minesweeper.io.console;
 
-// Import necessary classes from new locations
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.minesweeper.config.GameConfiguration;
 import com.minesweeper.domain.Coordinates;
 import com.minesweeper.exception.InputCancelledException;
 import com.minesweeper.handler.InputHandler;
 import com.minesweeper.handler.OutputHandler;
-
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Console implementation of the InputHandler interface.
@@ -17,12 +16,8 @@ import java.util.regex.Pattern;
  */
 public class ConsoleInputHandler implements InputHandler {
 
-    // Pattern to match input like "A1", "b12", "Z26"
-    // Requires single letter row, one or more digit column. Case-insensitive.
-    // Using literal 2 instead of Pattern.CASE_INSENSITIVE due to persistent linter issues.
-    // Note the double backslash needed for \d in a Java string literal.
-    private static final Pattern MOVE_PATTERN = Pattern.compile("^([a-zA-Z])(\\d+)$", Pattern.CASE_INSENSITIVE /* Pattern.CASE_INSENSITIVE */);
-    private static final double MINES_MAX_DENSITY = 0.35;
+    private static final Pattern MOVE_PATTERN = Pattern.compile("^([A-Z])(\\d+)$"); // Pattern to match input like "A1", "B12", "Z26"
+    private static final double MINES_MAX_DENSITY = 0.35; // Maximum density of mines on the grid
     private final Scanner scanner;
     private final OutputHandler outputHandler;
 

@@ -1,6 +1,5 @@
 package com.minesweeper.placement;
 
-// Import necessary classes from new locations
 import java.util.Random;
 
 import com.minesweeper.domain.Cell;
@@ -45,7 +44,6 @@ public class RandomMinePlacer implements MinePlacer {
     public void placeMines(Grid grid, int mineCount) {
         int size = grid.getSize();
         int totalCells = size * size;
-
         if (mineCount < 0) {
             throw new IllegalArgumentException("Mine count cannot be negative: " + mineCount);
         }
@@ -53,20 +51,16 @@ public class RandomMinePlacer implements MinePlacer {
             throw new IllegalArgumentException("Mine count (" + mineCount +
                     ") cannot exceed the total number of cells (" + totalCells + ")");
         }
-
         int minesPlaced = 0;
         while (minesPlaced < mineCount) {
             int r = random.nextInt(size);
             int c = random.nextInt(size);
             Coordinates coords = new Coordinates(r, c);
-            Cell cell = grid.getCell(coords); // getCell performs bounds check implicitly
-
-            // Only place a mine if the cell doesn't already have one
+            Cell cell = grid.getCell(coords);
             if (!cell.isMine()) {
                 cell.placeMine();
                 minesPlaced++;
             }
-            // If the cell already has a mine, the loop continues to find another random spot.
         }
     }
 } 

@@ -75,10 +75,9 @@ class ConsoleInputHandlerTest {
     @ParameterizedTest
     @CsvSource({
         "A1, 0, 0",
-        "a1, 0, 0",
         "C3, 2, 2",
         "D4, 3, 3",
-        "j10, 9, 9",
+        "J10, 9, 9",
         "Z26, 25, 25"
     })
     void getMoveInput_shouldParseValidFormatsCorrectly(String input, int expectedRow, int expectedCol) throws InputCancelledException {
@@ -91,7 +90,7 @@ class ConsoleInputHandlerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1A", "A", "1", "", "A 1", "AA1", "A1A", "AA"})
+    @ValueSource(strings = {"1A", "a2", "ab2", "A", "1", "", "A 1", "AA1", "A1A", "AA"})
     void getMoveInput_shouldRePromptOnInvalidFormat(String invalidInput) throws InputCancelledException {
         String validInput = "B2\n";
         provideInput(invalidInput + "\n" + validInput);
