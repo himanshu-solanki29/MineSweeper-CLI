@@ -53,7 +53,7 @@ class MinesweeperGameTest {
     }
 
     @Test
-    void run_shouldGetGameConfiguration() throws InputCancelledException {
+    void run_shouldGetGameConfiguration() {
         mockInputHandler.setConfigToReturn(testConfig);
         mockInputHandler.setMovesToReturn();
         mockInputHandler.setPlayAgain(false);
@@ -75,7 +75,7 @@ class MinesweeperGameTest {
     // --- Tests for game loop ---
 
     @Test
-    void run_shouldPlayGameUntilWin() throws InputCancelledException {
+    void run_shouldPlayGameUntilWin()  {
         GameConfiguration winConfig = new GameConfiguration(2, 1);
         Coordinates minePos = new Coordinates(0, 0);
         Coordinates safePos1 = new Coordinates(0, 1);
@@ -102,7 +102,7 @@ class MinesweeperGameTest {
     }
 
     @Test
-    void run_shouldPlayGameUntilLoss() throws InputCancelledException {
+    void run_shouldPlayGameUntilLoss()  {
         GameConfiguration loseConfig = new GameConfiguration(2, 1);
         Coordinates minePos = new Coordinates(0, 0);
 
@@ -148,10 +148,6 @@ class MinesweeperGameTest {
 
         void setPlayAgain(boolean value) {
             this.playAgain = value;
-        }
-
-        void setCancelException(InputCancelledException ex) {
-            this.cancelException = ex;
         }
 
         @Override

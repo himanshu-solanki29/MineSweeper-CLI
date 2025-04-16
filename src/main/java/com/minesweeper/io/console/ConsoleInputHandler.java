@@ -21,7 +21,7 @@ public class ConsoleInputHandler implements InputHandler {
     // Requires single letter row, one or more digit column. Case-insensitive.
     // Using literal 2 instead of Pattern.CASE_INSENSITIVE due to persistent linter issues.
     // Note the double backslash needed for \d in a Java string literal.
-    private static final Pattern MOVE_PATTERN = Pattern.compile("^([a-zA-Z])(\\d+)$", 2 /* Pattern.CASE_INSENSITIVE */);
+    private static final Pattern MOVE_PATTERN = Pattern.compile("^([a-zA-Z])(\\d+)$", Pattern.CASE_INSENSITIVE /* Pattern.CASE_INSENSITIVE */);
     private static final double MINES_MAX_DENSITY = 0.35;
     private final Scanner scanner;
     private final OutputHandler outputHandler;
@@ -68,7 +68,7 @@ public class ConsoleInputHandler implements InputHandler {
     }
 
     private int readValidatedMineCount(int gridSize) throws InputCancelledException {
-        int mineCount = -1;
+        int mineCount;
         int totalCells = gridSize * gridSize;
         double maxMinesDouble = Math.floor(totalCells * MINES_MAX_DENSITY);
         int maxMines = (int) maxMinesDouble;
@@ -90,7 +90,6 @@ public class ConsoleInputHandler implements InputHandler {
                 return mineCount; // Valid count entered
             } catch (IllegalArgumentException e) { // Catches non-integer input or validation rule failures
                 outputHandler.displayInvalidInputMessage("", e.getMessage());
-                // Loop continues
             }
         }
     }
