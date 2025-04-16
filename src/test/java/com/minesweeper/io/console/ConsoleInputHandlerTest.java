@@ -123,9 +123,7 @@ class ConsoleInputHandlerTest {
     void getMoveInput_shouldThrowExceptionOnQuit() {
         provideInput("quit\n");
         int gridSize = 5;
-        assertThrows(InputCancelledException.class, () -> {
-            inputHandler.getMoveInput(gridSize);
-        });
+        assertThrows(InputCancelledException.class, () -> inputHandler.getMoveInput(gridSize));
     }
     
     // --- Tests for getGameConfiguration ---
@@ -174,9 +172,7 @@ class ConsoleInputHandlerTest {
     @Test
     void getGameConfiguration_shouldThrowExceptionOnQuit() {
         provideInput("4\nquit\n");
-        assertThrows(InputCancelledException.class, () -> {
-            inputHandler.getGameConfiguration();
-        });
+        assertThrows(InputCancelledException.class, () -> inputHandler.getGameConfiguration());
     }
 
     // --- Tests for promptPlayAgain ---

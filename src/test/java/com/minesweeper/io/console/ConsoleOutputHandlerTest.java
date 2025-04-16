@@ -162,14 +162,6 @@ class ConsoleOutputHandlerTest {
         // Normalize line endings for cross-platform compatibility
         output = output.replace("\r\n", "\n");
 
-        // Define expected output (adjust spacing based on printf format)
-        String expectedOutput = 
-            "   1 2 3\n" +
-            "A  * 1 _\n" +
-            "B  1 1 _\n" +
-            "C  _ _ _\n" +
-            "\n"; // Includes the trailing newline after the grid
-
         // We can assert the whole string or check parts
         // Asserting the whole string is stricter but more brittle
         // assertEquals(expectedOutput, output, "Grid display format does not match expected output.");

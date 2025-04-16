@@ -48,10 +48,9 @@ class CoordinatesTest {
 
     @Test
     void equals_shouldReturnFalseForDifferentObjectTypes() {
-        Coordinates coords = new Coordinates(1, 1);
+        Coordinates coordinates = new Coordinates(1, 1);
         String otherObject = "1,1";
-
-        assertNotEquals(coords, otherObject, "Coordinates should not be equal to an object of a different type");
+        assertNotEquals(otherObject, coordinates, "Coordinates should not be equal to an object of a different type");
     }
 
      @Test
@@ -63,12 +62,6 @@ class CoordinatesTest {
     @Test
     void toString_shouldReturnReadableRepresentation() {
         Coordinates coordinates = new Coordinates(2, 8);
-        // Example format, specific format isn't strictly required by tests but good for debugging
-        String expectedString = "Coordinates[row=2, column=8]"; 
-        // If using a record, the default toString is usually fine and matches this format.
-        // If using a class, you might need to implement toString().
-        
-        // Let's just check it contains row and column values for now
         assertTrue(coordinates.toString().contains("row=2"), "toString should include the row value");
         assertTrue(coordinates.toString().contains("column=8"), "toString should include the column value");
     }

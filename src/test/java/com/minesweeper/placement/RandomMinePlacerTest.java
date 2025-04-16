@@ -98,9 +98,7 @@ class RandomMinePlacerTest {
         int mineCount = size * size + 1; 
         Grid grid = new Grid(size);
         RandomMinePlacer placer = new RandomMinePlacer();
-        assertThrows(IllegalArgumentException.class, () -> {
-            placer.placeMines(grid, mineCount);
-        });
+        assertThrows(IllegalArgumentException.class, () -> placer.placeMines(grid, mineCount));
     }
     
     @Test
@@ -109,9 +107,7 @@ class RandomMinePlacerTest {
         int mineCount = -1;
         Grid grid = new Grid(size);
         RandomMinePlacer placer = new RandomMinePlacer();
-        assertThrows(IllegalArgumentException.class, () -> {
-            placer.placeMines(grid, mineCount);
-        });
+        assertThrows(IllegalArgumentException.class, () -> placer.placeMines(grid, mineCount));
     }
 
     // Helper method to count mines in a grid
