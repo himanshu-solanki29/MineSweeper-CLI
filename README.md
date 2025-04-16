@@ -4,7 +4,7 @@ A command-line implementation of the classic Minesweeper game, written in Java.
 
 ## Description
 
-This project is a console-based Minesweeper game where the player attempts to clear a rectangular grid containing hidden mines without detonating any of them. The game follows the standard Minesweeper rules, including revealing adjacent mine counts and automatically clearing safe areas.
+This project is a console-based Minesweeper game where the player attempts to clear a square grid containing hidden mines without detonating any of them. The game follows the standard Minesweeper rules, including revealing adjacent mine counts and automatically clearing safe areas.
 
 ## Features
 
@@ -42,7 +42,7 @@ The application is built using Java 17 and Maven, adhering to Object-Oriented pr
 *   **Valid Input Ranges:** The input handling expects reasonable integer inputs for grid size and mine count. While basic validation (like max mine percentage) is included, it assumes users won't intentionally provide extremely large or negative numbers beyond simple checks.
 *   **Randomness:** The default mine placement uses `java.util.Random`. It's assumed this provides sufficient randomness for a playable game experience.
 *   **Single Player:** The game is designed for a single player interacting sequentially via the console.
-*   **Quitting the Game:** Games quits gracefully in case of input exceptions, also added option to quit game (helps with E2E testing).  
+*   **Quitting the Game:** Games quits gracefully in case of input exceptions, also added option to quit game.  
 
 ## Requirements
 
@@ -51,7 +51,7 @@ The application is built using Java 17 and Maven, adhering to Object-Oriented pr
 
 ## Building the Project
 
-1.  Clone the repository or download the source code.
+1.  Unzip the source code.
 2.  Navigate to the project's root directory (where `pom.xml` is located) in your terminal.
 3.  Run the following Maven command to compile the code and package it into an executable JAR:
     ```bash
@@ -101,3 +101,10 @@ minesweeper/
 │ └── minesweeper/ # Unit tests mirroring main structure
 └── target/ # Compiled code and JAR file (after build)
 ```
+
+## Author
+[Himanshu Solanki](https://github.com/himanshu-solanki29)
+
+
+
+
