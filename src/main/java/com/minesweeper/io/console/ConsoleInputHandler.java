@@ -52,19 +52,22 @@ public class ConsoleInputHandler implements InputHandler {
     }
 
     private int readValidatedGridSize() throws InputCancelledException {
-        int gridSize = -1;
-        while (gridSize <= 0) {
+        int gridSize;
+        while (true) {
+            String rawInput = "";
             try {
-                gridSize = readInt("Enter the size of the grid (e.g. 4 for a 4x4 grid): ");
+                rawInput = readLine("Enter the size of the grid (e.g. 4 for a 4x4 grid): ");
+                gridSize = Integer.parseInt(rawInput);
                 if (gridSize <= 0) {
-                    outputHandler.displayInvalidInputMessage(String.valueOf(gridSize), "Grid size must be positive.");
+                    throw new IllegalArgumentException("Grid size must be positive.");
                 }
-            } catch (IllegalArgumentException e) { // Catches non-integer input
-                outputHandler.displayInvalidInputMessage("", e.getMessage());
-                gridSize = -1; // Reset to continue loop
+                return gridSize; // valid grid size
+            } catch (NumberFormatException e) {
+                outputHandler.displayInvalidInputMessage(rawInput, "Input must be a valid integer.");
+            } catch (IllegalArgumentException e) {
+                outputHandler.displayInvalidInputMessage(rawInput, e.getMessage());
             }
         }
-        return gridSize;
     }
 
     private int readValidatedMineCount(int gridSize) throws InputCancelledException {
@@ -75,8 +78,10 @@ public class ConsoleInputHandler implements InputHandler {
 
         while (true) { // Loop until a valid mine count is entered
             String prompt = String.format("Enter the number of mines to place on the grid (maximum is %d): ", maxMines);
+            String rawInput = "";
             try {
-                mineCount = readInt(prompt);
+                rawInput = readLine(prompt);
+                mineCount = Integer.parseInt(rawInput);
                 // Now, validate against rules (non-negative, <= totalCells, <= maxMines)
                 if (mineCount < 0) {
                     throw new IllegalArgumentException("Mine count cannot be negative.");
@@ -88,8 +93,10 @@ public class ConsoleInputHandler implements InputHandler {
                     throw new IllegalArgumentException("Mine count exceeds maximum allowed (" + maxMines + ").");
                 }
                 return mineCount; // Valid count entered
-            } catch (IllegalArgumentException e) { // Catches non-integer input or validation rule failures
-                outputHandler.displayInvalidInputMessage("", e.getMessage());
+            } catch (NumberFormatException e) {
+                outputHandler.displayInvalidInputMessage(rawInput, "Input must be a valid integer.");
+            }  catch (IllegalArgumentException e) {
+                outputHandler.displayInvalidInputMessage(rawInput, e.getMessage());
             }
         }
     }
@@ -147,19 +154,13 @@ public class ConsoleInputHandler implements InputHandler {
     /**
      * Helper to read an integer, handling non-numeric input and 'quit'.
      */
-    private int readInt(String prompt) throws InputCancelledException, IllegalArgumentException {
+    private String readLine(String prompt) throws InputCancelledException {
         System.out.print(prompt); // Keep direct print for prompt
         String line = scanner.nextLine().trim();
-
         if (line.equalsIgnoreCase("quit")) {
             throw new InputCancelledException("User quit during input.");
         }
-
-        try {
-            return Integer.parseInt(line);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid input: '" + line + "'. Please enter a whole number.");
-        }
+        return line;
     }
 }
  
