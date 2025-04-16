@@ -112,10 +112,8 @@ public class MinesweeperGame {
             gameState = GameState.LOST;
         } else {
             grid.revealCell(coordinates);
-            // Only display adjacent count if it wasn't a mine
-            if (selectedCell.getAdjacentMineCount() > 0) {
-                 outputHandler.displayAdjacentMineCount(selectedCell.getAdjacentMineCount());
-            }
+            outputHandler.displayAdjacentMineCount(selectedCell.getAdjacentMineCount());
+
             // Check for win condition
             if (grid.areAllNonMinesRevealed()) {
                 gameState = GameState.WON;

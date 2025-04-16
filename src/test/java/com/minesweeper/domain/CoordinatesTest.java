@@ -34,15 +34,12 @@ class CoordinatesTest {
         Coordinates coords2 = new Coordinates(4, 4);
 
         assertNotEquals(coords1, coords2, "Coordinates with different rows should not be equal");
-        // Note: Hash codes *might* collide, but it's unlikely for simple cases and not strictly required by equals contract
-        // assertNotEquals(coords1.hashCode(), coords2.hashCode());
     }
 
     @Test
     void equals_shouldReturnFalseForDifferentColumns() {
         Coordinates coords1 = new Coordinates(3, 4);
         Coordinates coords2 = new Coordinates(3, 5);
-
         assertNotEquals(coords1, coords2, "Coordinates with different columns should not be equal");
     }
 

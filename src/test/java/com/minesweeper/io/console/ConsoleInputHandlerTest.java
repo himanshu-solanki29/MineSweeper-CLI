@@ -55,7 +55,6 @@ class ConsoleInputHandlerTest {
     private void provideInput(String data) {
         InputStream testInput = new ByteArrayInputStream(data.getBytes(StandardCharsets.UTF_8));
         System.setIn(testInput);
-        // Create handler *after* setting System.in, pass dependencies
         inputHandler = new ConsoleInputHandler(mockOutputHandler, new Scanner(System.in)); 
     }
 
@@ -156,6 +155,7 @@ class ConsoleInputHandlerTest {
         assertEquals(3, config.mineCount());
         String output = testOutput.toString(StandardCharsets.UTF_8);
         assertTrue(output.contains("Mine count cannot be negative"));
+        assertTrue(output.contains("Mine count cannot exceed total cells"));
     }
 
     @Test

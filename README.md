@@ -35,8 +35,10 @@ The application is built using Java 17 and Maven, adhering to Object-Oriented pr
 
 ### Assumptions
 
+
 *   **Square Grid:** The game currently assumes and enforces a square grid (NxN) as per the initial prompt interpretation ("Enter the size of the grid (e.g., 4 for a 4x4 grid)"). Extending to rectangular grids would require minor modifications, primarily in input handling and potentially grid representation.
-*   **Console Interface:** The primary interface is the command line. While the design supports adding other interfaces (GUI, web), only the console is implemented.
+    * We could make an interface called Grid which would be implemented by concrete classes like SquareGrid, RectangularGrid etc.    
+* **Console Interface:** The primary interface is the command line. While the design supports adding other interfaces (GUI, web), only the console is implemented.
 *   **Valid Input Ranges:** The input handling expects reasonable integer inputs for grid size and mine count. While basic validation (like max mine percentage) is included, it assumes users won't intentionally provide extremely large or negative numbers beyond simple checks.
 *   **Randomness:** The default mine placement uses `java.util.Random`. It's assumed this provides sufficient randomness for a playable game experience.
 *   **Single Player:** The game is designed for a single player interacting sequentially via the console.

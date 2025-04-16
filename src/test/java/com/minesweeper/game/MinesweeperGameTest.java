@@ -21,6 +21,7 @@ import com.minesweeper.handler.OutputHandler;
 /**
  * Unit tests for the MinesweeperGame orchestrator class.
  * Mocks dependencies to test game flow logic.
+ * Test controlled inputs from its collaborators.
  */
 class MinesweeperGameTest {
 
