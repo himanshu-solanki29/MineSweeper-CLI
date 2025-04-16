@@ -87,6 +87,9 @@ public class ConsoleOutputHandler implements OutputHandler {
     }
 
     @Override
+    public void displayAlreadyRevealedMessage() { System.out.println("(Already revealed)"); }
+
+    @Override
     public void displayPromptPlayAgain() {
         System.out.println("Press any key to play again...");
     }

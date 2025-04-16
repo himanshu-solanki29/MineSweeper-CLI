@@ -184,6 +184,7 @@ class MinesweeperGameTest {
         boolean displayWinCalled = false;
         boolean displayAdjCountCalled = false;
         boolean displayInvalidInputCalled = false;
+        boolean displayAlreadyRevealed = false;
         boolean displayPlayAgainCalled = false;
         boolean displayGoodbyeCalled = false;
         Grid lastGridDisplayed = null;
@@ -225,6 +226,9 @@ class MinesweeperGameTest {
         public void displayInvalidInputMessage(String input, String reason) {
             displayInvalidInputCalled = true;
         }
+
+        @Override
+        public void displayAlreadyRevealedMessage() { displayAlreadyRevealed = true; }
 
         @Override
         public void displayPromptPlayAgain() {

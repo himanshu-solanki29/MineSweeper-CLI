@@ -103,8 +103,7 @@ public class MinesweeperGame {
         Cell selectedCell = grid.getCell(coordinates); // Relies on getCell for bounds check
 
         if (selectedCell.isRevealed()) {
-            // Optionally provide feedback: outputHandler.displayAlreadyRevealedMessage();
-            System.out.println("(Already revealed)"); // Simple feedback for now
+            outputHandler.displayAlreadyRevealedMessage();
             return; 
         }
         // Check if the cell is a mine

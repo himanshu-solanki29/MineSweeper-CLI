@@ -55,7 +55,13 @@ public interface OutputHandler {
      * @param reason A brief explanation of why the input was invalid.
      */
     void displayInvalidInputMessage(String input, String reason);
-    
+
+    /**
+     * Displays a prompt telling user cell is already revealed.
+     * (e.g., "(Already revealed)")
+     * Note: The actual reading of the response is handled by InputHandler.
+     */
+    void displayAlreadyRevealedMessage();
     /**
      * Displays a prompt asking the user if they want to play again.
      * (e.g., "Press any key to play again...") 
