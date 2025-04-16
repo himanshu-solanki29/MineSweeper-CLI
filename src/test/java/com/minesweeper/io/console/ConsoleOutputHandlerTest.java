@@ -112,7 +112,7 @@ class ConsoleOutputHandlerTest {
         outputHandler.displayPromptPlayAgain();
         String output = getCapturedOutput();
         // Check for core part of the message from problem statement
-        assertTrue(output.contains("Press enter key to play again..."), "Output should contain play again prompt");
+        assertTrue(output.contains("Press any key to play again..."), "Output should contain play again prompt");
         // Problem statement shows this on its own line
         assertTrue(output.endsWith("\n") || output.endsWith("\r\n"), "Output should end with a newline");
     }

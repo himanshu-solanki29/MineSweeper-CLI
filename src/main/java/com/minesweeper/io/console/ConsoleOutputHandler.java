@@ -87,7 +87,7 @@ public class ConsoleOutputHandler implements OutputHandler {
 
     @Override
     public void displayPromptPlayAgain() {
-        System.out.println("Press enter key to play again...or type 'n' to quit");
+        System.out.println("Press any key to play again...");
     }
 
     @Override
