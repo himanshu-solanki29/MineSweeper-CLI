@@ -1,5 +1,16 @@
 package com.minesweeper.io.console;
 
+import com.minesweeper.config.GameConfiguration;
+import com.minesweeper.domain.Coordinates;
+import com.minesweeper.exception.InputCancelledException;
+import com.minesweeper.handler.OutputHandler;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -7,22 +18,7 @@ import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import com.minesweeper.config.GameConfiguration;
-import com.minesweeper.domain.Coordinates;
-import com.minesweeper.exception.InputCancelledException;
-import com.minesweeper.handler.OutputHandler;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for the ConsoleInputHandler class.
