@@ -1,7 +1,8 @@
-package com.minesweeper.game;
+package com.minesweeper;
 
 import com.minesweeper.domain.Coordinates;
 import com.minesweeper.domain.Grid;
+import com.minesweeper.game.MinesweeperGame;
 import com.minesweeper.handler.InputHandler;
 import com.minesweeper.handler.MinePlacer;
 import com.minesweeper.handler.OutputHandler;
@@ -17,8 +18,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Set; // Needed for the anonymous class logic
-import java.util.HashSet; // Needed for the anonymous class logic
+import java.util.Set;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,9 +60,8 @@ public class MinesweeperE2ETest {
     void testWinGameScenario() {
         // --- Setup ---
         String input = "3\n" + "1\n" + "A1\n" + "A2\n" + "A3\n" +
-                "B1\n" +         "B3\n" + // Skip B2 (the mine)
-                "C1\n" + "C2\n" + "C3\n" +
-                "n\n";
+                "B1\n" +         "B3\n" +
+                "C1\n" + "C2\n" + "C3\n";
         provideInput(input);
 
         // Define mine location(s) for this test
@@ -87,7 +87,7 @@ public class MinesweeperE2ETest {
     @Test
     void testLossGameScenario() {
         // --- Setup ---
-        String input = "3\n" + "1\n" + "B2\n" + "n\n";
+        String input = "3\n" + "1\n" + "B2\n";
         provideInput(input);
 
         // Mine at B2 (row 1, col 1)
@@ -111,7 +111,7 @@ public class MinesweeperE2ETest {
     @Test
     void testCascadeRevealScenario() {
         // --- Setup ---
-        String input = "4\n" + "1\n" + "A1\n" + "C4\n" + "D3\n" + "D4\n" +  "n\n";
+        String input = "4\n" + "1\n" + "A1\n" + "C4\n" + "D3\n" + "D4\n";
         provideInput(input);
         // Mine at C3 (row 2, col 2)
         final List<Coordinates> mineCoordinates = List.of(new Coordinates(2, 2));
@@ -154,9 +154,25 @@ public class MinesweeperE2ETest {
 
         // Console handlers
         OutputHandler outputHandler = new ConsoleOutputHandler();
-        InputHandler inputHandler = new ConsoleInputHandler(outputHandler);
+        InputHandler inputHandler = new TestInputHandler(outputHandler);
 
         // Create and run the game with the anonymous MinePlacer
         return new MinesweeperGame(inputHandler, outputHandler, testMinePlacer);
     }
+
+    /**
+     * Test-specific InputHandler that always exits after one game
+     */
+    private static class TestInputHandler extends ConsoleInputHandler {
+        public TestInputHandler(OutputHandler outputHandler) {
+            super(outputHandler);
+        }
+
+        @Override
+        public boolean promptPlayAgain() {
+            // In test environment, always quit after one game
+            return false;
+        }
+    }
+
 }

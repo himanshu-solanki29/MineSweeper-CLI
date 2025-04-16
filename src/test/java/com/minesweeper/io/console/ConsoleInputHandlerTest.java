@@ -33,17 +33,14 @@ class ConsoleInputHandlerTest {
     private final InputStream originalSystemIn = System.in;
     private final PrintStream originalSystemOut = System.out;
     private ByteArrayOutputStream testOutput; // To capture System.out
-    private OutputHandler mockOutputHandler; // Use a mock or real handler
-    private ConsoleInputHandler inputHandler; // Instance under test - Use concrete type for constructor
+    private OutputHandler mockOutputHandler;
+    private ConsoleInputHandler inputHandler; // Instance under test
 
     @BeforeEach
     void setUp() {
         testOutput = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOutput));
-        // Create the dependency (OutputHandler) needed by ConsoleInputHandler
-        // Using the real ConsoleOutputHandler implementation here is okay since we capture its output
-        mockOutputHandler = new ConsoleOutputHandler(); 
-        // System.in will be set per test method before creating inputHandler
+        mockOutputHandler = new ConsoleOutputHandler();
     }
 
     @AfterEach
@@ -117,6 +114,7 @@ class ConsoleInputHandlerTest {
         assertTrue(output.contains("out of bounds"));
     }
 
+
     @Test
     void getMoveInput_shouldThrowExceptionOnQuit() {
         provideInput("quit\n");
@@ -183,17 +181,10 @@ class ConsoleInputHandlerTest {
     }
 
     @Test
-    void promptPlayAgain_shouldReturnTrueForAnyNonNInput() {
-        provideInput("y\n"); // Simulate 'y' + Enter
+    void promptPlayAgain_shouldReturnTrueForAnyInput() {
+        provideInput("\n"); //  Enter
         inputHandler = new ConsoleInputHandler(mockOutputHandler, new Scanner(System.in));
         assertTrue(inputHandler.promptPlayAgain());
-    }
-
-    @Test
-    void promptPlayAgain_shouldReturnFalseForN() {
-        provideInput("n\n"); // Simulate 'n' + Enter
-        inputHandler = new ConsoleInputHandler(mockOutputHandler, new Scanner(System.in));
-        assertFalse(inputHandler.promptPlayAgain());
     }
 
 } 

@@ -1,6 +1,5 @@
 package com.minesweeper.placement;
 
-// Import necessary classes from new locations
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

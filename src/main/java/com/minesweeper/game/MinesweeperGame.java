@@ -139,7 +139,6 @@ public class MinesweeperGame {
      */
     private void revealAllMines() {
         if (grid != null) {
-            // Use the public method we added to Grid
             grid.revealAllMines(); 
         }
     }

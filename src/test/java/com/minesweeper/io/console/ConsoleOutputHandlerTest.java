@@ -29,7 +29,7 @@ class ConsoleOutputHandlerTest {
     void setUp() {
         testOutput = new ByteArrayOutputStream();
         System.setOut(new PrintStream(testOutput));
-        outputHandler = new ConsoleOutputHandler(); // Create instance to test
+        outputHandler = new ConsoleOutputHandler();
     }
 
     @AfterEach
@@ -74,7 +74,7 @@ class ConsoleOutputHandlerTest {
         outputHandler.displayWinMessage();
         String output = getCapturedOutput();
         assertTrue(output.contains("Congratulations, you have won the game!"), "Output should contain win message");
-         assertTrue(output.endsWith("\n") || output.endsWith("\r\n"), "Output should end with a newline");
+        assertTrue(output.endsWith("\n") || output.endsWith("\r\n"), "Output should end with a newline");
     }
 
     @Test
@@ -112,7 +112,7 @@ class ConsoleOutputHandlerTest {
         outputHandler.displayPromptPlayAgain();
         String output = getCapturedOutput();
         // Check for core part of the message from problem statement
-        assertTrue(output.contains("Press any key to play again..."), "Output should contain play again prompt");
+        assertTrue(output.contains("Press enter key to play again..."), "Output should contain play again prompt");
         // Problem statement shows this on its own line
         assertTrue(output.endsWith("\n") || output.endsWith("\r\n"), "Output should end with a newline");
     }
@@ -158,15 +158,7 @@ class ConsoleOutputHandlerTest {
         Grid grid = setupGridForDisplayTest();
         outputHandler.displayGrid(grid);
         String output = getCapturedOutput();
-        
-        // Normalize line endings for cross-platform compatibility
         output = output.replace("\r\n", "\n");
-
-        // We can assert the whole string or check parts
-        // Asserting the whole string is stricter but more brittle
-        // assertEquals(expectedOutput, output, "Grid display format does not match expected output.");
-        
-        // Alternative: Check for key lines/elements to be less brittle
         assertTrue(output.contains("  1 2 3"), "Output missing header row");
         assertTrue(output.contains("A  * 1 _"), "Output missing row A content");
         assertTrue(output.contains("B  1 1 _"), "Output missing row B content");

@@ -1,7 +1,5 @@
 package com.minesweeper.game;
 
-// Import necessary classes from new locations
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -25,7 +23,7 @@ import com.minesweeper.handler.OutputHandler;
  */
 class MinesweeperGameTest {
 
-    // Use interfaces for mock types
+
     private MockInputHandler mockInputHandler;
     private MockOutputHandler mockOutputHandler;
     private MockMinePlacer mockMinePlacer;
@@ -33,7 +31,6 @@ class MinesweeperGameTest {
     private MinesweeperGame game; // Instance under test
 
     // Default configuration for tests
-    // Use config package
     private final GameConfiguration testConfig = new GameConfiguration(4, 3);
 
     @BeforeEach
@@ -73,8 +70,8 @@ class MinesweeperGameTest {
         assertEquals(testConfig.gridSize(), mockMinePlacer.gridPassedToPlaceMines.getSize());
         assertEquals(testConfig.mineCount(), mockMinePlacer.mineCountPassedToPlaceMines);
     }
-    // --- Tests for game loop ---
 
+    // --- Tests for game loop ---
     @Test
     void run_shouldPlayGameUntilWin()  {
         GameConfiguration winConfig = new GameConfiguration(2, 1);

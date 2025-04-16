@@ -42,6 +42,7 @@ The application is built using Java 17 and Maven, adhering to Object-Oriented pr
 *   **Valid Input Ranges:** The input handling expects reasonable integer inputs for grid size and mine count. While basic validation (like max mine percentage) is included, it assumes users won't intentionally provide extremely large or negative numbers beyond simple checks.
 *   **Randomness:** The default mine placement uses `java.util.Random`. It's assumed this provides sufficient randomness for a playable game experience.
 *   **Single Player:** The game is designed for a single player interacting sequentially via the console.
+*   **Quitting the Game:** Games quits gracefully in case of input exceptions, also added option to quit game (helps with E2E testing).  
 
 ## Requirements
 

@@ -220,7 +220,7 @@ public class Grid {
     /**
      * Helper method to reveal all mine locations, typically used at game over.
      */
-    public void revealAllMines() { // Changed to public for potential use in testing/display
+    public void revealAllMines() {
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
                 Cell cell = cells[r][c];

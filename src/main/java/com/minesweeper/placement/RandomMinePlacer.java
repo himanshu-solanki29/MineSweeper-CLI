@@ -55,8 +55,8 @@ public class RandomMinePlacer implements MinePlacer {
         while (minesPlaced < mineCount) {
             int r = random.nextInt(size);
             int c = random.nextInt(size);
-            Coordinates coords = new Coordinates(r, c);
-            Cell cell = grid.getCell(coords);
+            Coordinates coordinates = new Coordinates(r, c);
+            Cell cell = grid.getCell(coordinates);
             if (!cell.isMine()) {
                 cell.placeMine();
                 minesPlaced++;

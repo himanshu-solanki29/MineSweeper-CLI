@@ -23,8 +23,9 @@ public class ConsoleInputHandler implements InputHandler {
 
     /**
      * Primary constructor for dependency injection.
+     *
      * @param outputHandler Handler for displaying prompts/errors.
-     * @param scanner Scanner instance to read input from.
+     * @param scanner       Scanner instance to read input from.
      */
     public ConsoleInputHandler(OutputHandler outputHandler, Scanner scanner) {
         this.outputHandler = outputHandler;
@@ -33,6 +34,7 @@ public class ConsoleInputHandler implements InputHandler {
 
     /**
      * Convenience constructor using default System.in scanner.
+     *
      * @param outputHandler Handler for displaying prompts/errors.
      */
     public ConsoleInputHandler(OutputHandler outputHandler) {
@@ -90,7 +92,7 @@ public class ConsoleInputHandler implements InputHandler {
                 return mineCount; // Valid count entered
             } catch (NumberFormatException e) {
                 outputHandler.displayInvalidInputMessage(rawInput, "Input must be a valid integer.");
-            }  catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 outputHandler.displayInvalidInputMessage(rawInput, e.getMessage());
             }
         }
@@ -136,10 +138,11 @@ public class ConsoleInputHandler implements InputHandler {
     @Override
     public boolean promptPlayAgain() {
         outputHandler.displayPromptPlayAgain();
-        System.out.println(" (Press Enter to play again, or type 'n' to quit)");
         try {
-            String input = scanner.nextLine().trim().toLowerCase();
-            return !input.equals("n"); // Anything other than 'n' (or empty string) means play again
+            // Wait for any key press
+            scanner.nextLine();
+            // Always return true to continue playing
+            return true;
         } catch (Exception e) {
             System.err.println("Error reading input for play again prompt: " + e.getMessage());
             return false;
